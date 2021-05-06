@@ -1,11 +1,11 @@
 var screen = 0;
 
-var splashScreen = function() {
+var splashScreen = function() { //Starting screen of the game
 screen = 1;
 background(94, 141, 191);
 textSize(77);
 text("Madlibs!",54,107);
-//Button 1
+//Button 1 for start
     noStroke();
     fill(0, 0, 0);
     rect(115,171,171,41);
@@ -14,7 +14,7 @@ text("Madlibs!",54,107);
     fill(0, 64, 255);
     textSize(35);
     text("Start!", 157, 197);
-//Button 2
+//Button 2 for instructions
     noStroke();
     fill(0, 0, 0);
     rect(115,261,171,41);
@@ -24,7 +24,7 @@ text("Madlibs!",54,107);
     textSize(29);
     text("Instructions", 124, 287);
 };
-var instructionsScreen = function() {
+var instructionsScreen = function() { //Instructions screen of the game
     screen = 2;
     background(94, 141, 191);
     textSize(50);
@@ -41,12 +41,21 @@ var instructionsScreen = function() {
     text("Got it!",160,330);
 };
 
+var word1;
+var word2;
+var word3;
+var word4;
+
+/*
+Arrays for all the possible selections in start screen
+*/
+
 var nouns = ["Sock", "Baby", "Ship", "Chocolate"];
 var adjectives = ["Skinny", "Tall", "Strong", "Fickle"];
 var verbings = ["Running", "Falling", "Wrecking", "Calling"];
 var verbs = ["Sleep", "Swing", "Crawl", "Sling"];
 
-var startScreen = function() {
+var startScreen = function() { //Start screen function
     screen = 3;
     background(94, 141, 191);
     textSize(30);
@@ -77,6 +86,9 @@ var startScreen = function() {
         fill(97, 255, 184);
         text(verbs[i], 15 + (i*90), 330);
     }
+    var finalScreen = function() {
+    
+    };
 };
 splashScreen();
 mouseClicked = function() {
@@ -92,13 +104,101 @@ mouseClicked = function() {
     mouseY < 340 && mouseY > 300) {
     splashScreen();
     }
+    /*
+    The if statements for the start screen to select each word for each required         input
+    
+    For Nouns (word1)
+    */
+    if (screen === 3 && mouseX > 17 && mouseX < 55 && mouseY > 88 && mouseY < 101) {
+        word1 = "Sock";
+    }
+    if (screen === 3 && mouseX > 102 && mouseX < 142 && mouseY > 88 && mouseY < 101) {
+        word1 = "Baby";
+    }
+    if (screen === 3 && mouseX > 186 && mouseX < 222 && mouseY > 88 && mouseY < 101) {
+        word1 = "Ship";
+    }
+    if (screen === 3 && mouseX > 271 && mouseX < 351 && mouseY > 88 && mouseY < 101) {
+        word1 = "Chocolate";
+    }
+    /*
+    For Adjectives (word2)
+    */
+    if (screen === 3 && mouseX > 17 && mouseX < 70 && mouseY > 164 && mouseY < 176) {
+        word2 = "Skinny";
+    }
+    if (screen === 3 && mouseX > 107 && mouseX < 133 && mouseY > 164 && mouseY < 176) {
+        word2 = "Tall";
+    }
+    if (screen === 3 && mouseX > 197 && mouseX < 248 && mouseY > 164 && mouseY < 176) {
+        word2 = "Strong";
+    }
+    if (screen === 3 && mouseX > 287 && mouseX < 332 && mouseY > 164 && mouseY < 176) {
+        word2 = "Fickle";
+    }
+    /*
+    For Verbs ending in -ing (word3)
+    */
+    if (screen === 3 && mouseX > 17 && mouseX < 82 && mouseY > 244 && mouseY < 256) {
+        word3 = "Running";
+    }
+    if (screen === 3 && mouseX > 108 && mouseX < 158 && mouseY > 244 && mouseY < 256) {
+        word3 = "Falling";
+    }
+    if (screen === 3 && mouseX > 197 && mouseX < 270 && mouseY > 244 && mouseY < 256) {
+        word3 = "Wrecking";
+    }
+    if (screen === 3 && mouseX > 287 && mouseX < 340 && mouseY > 244 && mouseY < 256) {
+        word3 = "Calling";
+    }
+    /*
+    For Verbs (word4)
+    */
+    if (screen === 3 && mouseX > 17 && mouseX < 61 && mouseY > 319 && mouseY < 332) {
+        word4 = "Sleep";
+    }
+    if (screen === 3 && mouseX > 107 && mouseX < 154 && mouseY > 319 && mouseY < 332) {
+        word4 = "Swing";
+    }
+    if (screen === 3 && mouseX > 197 && mouseX < 241 && mouseY > 319 && mouseY < 332) {
+        word4 = "Crawl";
+    }
+    if (screen === 3 && mouseX > 287 && mouseX < 325 && mouseY > 319 && mouseY < 332) {
+        word4 = "Sling";
+    }
+    if (word1 === undefined) {} //if no value is in word1, nothing will happen
+    else {
+    fill(94, 141, 191);
+    noStroke();
+    rect(100,108,202,32);
+    fill(21, 35, 161);
+    text("You chose: " + word1 + "!", 120,131);
+    }
+    if (word2 === undefined) {} //if no value is in word2, nothing will happen
+    else {
+    fill(94, 141, 191);
+    noStroke();
+    rect(100,180,202,26);
+    fill(21, 35, 161);
+    text("You chose: " + word2 + "!", 120,200);
+    }
+    if (word3 === undefined) {} //if no value is in word3, nothing will happen
+    else {
+    fill(94, 141, 191);
+    noStroke();
+    rect(100,264,202,26);
+    fill(21, 35, 161);
+    text("You chose: " + word3 + "!", 120,282);
+    }
+    if (word4 === undefined) {} //if no value is in word4, nothing will happen
+    else {
+    fill(94, 141, 191);
+    noStroke();
+    rect(100,346,202,26);
+    fill(21, 35, 161);
+    text("You chose: " + word4 + "!", 120,364);
+    }
 };
-
-var option1 = [];
-var option2 = [];
-var option3 = [];
-var option4 = [];
-
 /*
 draw = function() {
     println(mouseX + ", " + mouseY);
