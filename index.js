@@ -206,7 +206,7 @@ var finalScreen = function() { //final screen of game with paragraph
     textSize(36);
     text("Madlibbed!",21,50);
     textSize(20);
-    text("Today I went to the zoo. I saw a huge " + word1 + " trying to climb a tree... So naturally, I grabbed a " + word2 + " stick and threw it in their direction, but upon the release I heard a shout over my shoulder. I turned to see an angered zoo keeper " + word3 + " in my direction, so I ran and hopped a fence into a exhibit, and what luck to just end up in the " + word4 + " exhibit. Worst zoo experience EVER!!",20,100,352,286);
+    text("Today I went to the zoo. I saw a huge " + word1 + " trying to climb a tree... So naturally, I grabbed a " + word2 + " stick and threw it in their direction, but upon the release I heard a shout over my shoulder. I turned to see an angered zoo keeper " + word3 + " in my direction, so I ran and hopped a fence into a exhibit, and what luck to just end up in the " + word4 + " exhibit. Worst zoo experience EVER!",20,100,352,286);
     fill(255, 255, 255);
     rect(300,367,94,29);
     textSize(15);
