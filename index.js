@@ -1,5 +1,66 @@
 var screen = 0;
 
+var drawBitHead = function(bitmojiX,bitmojiY) {
+    //Head
+    fill(235, 218, 174);
+    ellipse (bitmojiX+91.5,bitmojiY+86,37.5,37.5);
+
+//Hat
+    //left antler
+    beginShape();
+    fill(140, 100, 52);
+    vertex(bitmojiX+55.5, bitmojiY+60);
+    vertex(bitmojiX+64.5, bitmojiY+60);
+    vertex(bitmojiX+61.5, bitmojiY+70);
+    vertex(bitmojiX+81, bitmojiY+70);
+    vertex(bitmojiX+78, bitmojiY+80);
+    vertex(bitmojiX+49.5, bitmojiY+80);
+    endShape(CLOSE);
+    //right antler
+    beginShape();
+    vertex(bitmojiX+103,bitmojiY+70);
+    vertex(bitmojiX+100.5,bitmojiY+79.5);
+    vertex(bitmojiX+126,bitmojiY+79.5);
+    vertex(bitmojiX+131.5,bitmojiY+60.5);
+    vertex(bitmojiX+122.5,bitmojiY+60.5);
+    vertex(bitmojiX+120,bitmojiY+70);
+    vertex(bitmojiX+103,bitmojiY+70);
+    endShape();
+    //fill
+    noStroke();
+    arc(bitmojiX+91,bitmojiY+76,30,17,180,360);
+//Eyes
+    //left eye
+    stroke(0, 0, 0);
+    fill(0, 51, 255);
+    ellipse(bitmojiX+82.5,bitmojiY+80.5,4.5,4.5);
+    fill(0, 0, 0);
+    ellipse(bitmojiX+82.5,bitmojiY+81,1.5,1.5);
+    //right eye
+    fill(0, 51, 255);
+    ellipse(bitmojiX+96.5,bitmojiY+81,4.5,4.5);
+    fill(0, 0, 0);
+    ellipse(bitmojiX+96.5,bitmojiY+81,1.5,1.5);
+//Mouth
+    fill(0, 0, 0);
+    arc(bitmojiX+91.5,bitmojiY+92.5,16,4,1,170);
+//Nose
+    line(bitmojiX+90,bitmojiY+87,bitmojiX+87.5,bitmojiY+87);
+    line(bitmojiX+87.5,bitmojiY+87.5,bitmojiX+89,bitmojiY+84);
+};
+var drawBitBody = function(bitmojiX,bitmojiY) {
+    //Body
+    arc(bitmojiX+91.5,bitmojiY+127.5,39.5,46,180,360);
+//Initials
+    fill(255, 255, 255);
+    textSize(10);
+    text("A.S",bitmojiX+80.8,bitmojiY+111.5,62,60.5);
+};
+var drawAmirBitmoji = function(bitmojiX,bitmojiY) {
+    drawBitHead(bitmojiX,bitmojiY);
+    drawBitBody(bitmojiX,bitmojiY);
+};
+
 var drawBitmojiHead = function(x,y,bitmojiHead) {
 noStroke();
 fill(255, 224, 189); //
@@ -39,7 +100,7 @@ textSize(29*bodyH/150);
 text("CC", bodyX-23*bodyH/150, bodyY+54*bodyH/150, 55*bodyH/150, 96*bodyH/150);
 };
 
-var drawBitmoji = function(bitmojiX, bitmojiY,bitmojiH) {
+var drawCadeBitmoji = function(bitmojiX, bitmojiY,bitmojiH) {
     drawBitmojiHead(bitmojiX,bitmojiY,bitmojiH);
     drawBitmojiBody(bitmojiX,bitmojiY,bitmojiH);
 };
@@ -67,9 +128,11 @@ text("Madlibs!",54,107);
     fill(0, 64, 255);
     textSize(29);
     text("Instructions", 124, 287);
-    textSize(12);
-    text("By Amir Sammoura and Cade Curran",97,389);
-    drawBitmoji(321,323,64);
+//Bitmoji & Authors
+    drawAmirBitmoji(269,274);
+    drawCadeBitmoji(30,372,50);
+    textSize(14);
+    text("By: Amir S. & Cade C.", 3,19);
 };
 var instructionsScreen = function() { //Instructions screen of the game
     screen = 2;
@@ -97,10 +160,10 @@ var word4;
 Arrays for all the possible selections in start screen
 */
 
-var nouns = ["Sock", "Baby", "Ship", "Chocolate"];
-var adjectives = ["Skinny", "Tall", "Strong", "Fickle"];
-var verbings = ["Running", "Falling", "Wrecking", "Calling"];
-var verbs = ["Sleep", "Swing", "Crawl", "Sling"];
+var nouns = ["Sock", "Baby", "Ship", "Baboon"];
+var adjectives = ["Skinny", "Tall", "Strong", "Brittle"];
+var verbings = ["Running", "Falling", "Crawling", "Sliding"];
+var nouns2 = ["Rhino", "Lion", "Deer", "Snake"];
 
 var startScreen = function() { //Start screen function
     screen = 3;
@@ -128,17 +191,34 @@ var startScreen = function() { //Start screen function
         text(verbings[i], 15 + (i*90), 255);
     }
     fill(255, 255, 255);
-    text("Verb:",15,295);
+    text("Noun:",15,295);
     for (var i = 0; i < 10; i++) {
         fill(97, 255, 184);
-        text(verbs[i], 15 + (i*90), 330);
+        text(nouns2[i], 15 + (i*90), 330);
     }
     var finalScreen = function() {
     
     };
 };
-splashScreen();
+var finalScreen = function() { //final screen of game with paragraph
+    screen = 4;
+    background(94, 141, 191);
+    textSize(36);
+    text("Madlibbed!",21,50);
+    textSize(20);
+    text("Today I went to the zoo. I saw a huge " + word1 + " trying to climb a tree... So naturally, I grabbed a " + word2 + " stick and threw it in their direction, but upon the release I heard a shout over my shoulder. I turned to see an angered zoo keeper " + word3 + " in my direction, so I ran and hopped a fence into a exhibit, and what luck to just end up in the " + word4 + " exhibit. Worst zoo experience EVER!",20,100,352,286);
+    fill(255, 255, 255);
+    rect(300,367,94,29);
+    textSize(15);
+    fill(25, 112, 112);
+    text("Try Again!",313,387);
+};
+splashScreen(); //starts the game
+
 mouseClicked = function() {
+    /*
+    Buttons on Splash Screen
+    */
     if (screen === 1 && mouseX > 115 && mouseX < 276 &&
     mouseY < 300 && mouseY > 255) {
     instructionsScreen();
@@ -157,61 +237,61 @@ mouseClicked = function() {
     For Nouns (word1)
     */
     if (screen === 3 && mouseX > 17 && mouseX < 55 && mouseY > 88 && mouseY < 101) {
-        word1 = "Sock";
+        word1 = "sock";
     }
     if (screen === 3 && mouseX > 102 && mouseX < 142 && mouseY > 88 && mouseY < 101) {
-        word1 = "Baby";
+        word1 = "baby";
     }
     if (screen === 3 && mouseX > 186 && mouseX < 222 && mouseY > 88 && mouseY < 101) {
-        word1 = "Ship";
+        word1 = "ship";
     }
-    if (screen === 3 && mouseX > 271 && mouseX < 351 && mouseY > 88 && mouseY < 101) {
-        word1 = "Chocolate";
+    if (screen === 3 && mouseX > 272 && mouseX < 332 && mouseY > 88 && mouseY < 101) {
+        word1 = "baboon";
     }
     /*
     For Adjectives (word2)
     */
     if (screen === 3 && mouseX > 17 && mouseX < 70 && mouseY > 164 && mouseY < 176) {
-        word2 = "Skinny";
+        word2 = "skinny";
     }
     if (screen === 3 && mouseX > 107 && mouseX < 133 && mouseY > 164 && mouseY < 176) {
-        word2 = "Tall";
+        word2 = "tall";
     }
     if (screen === 3 && mouseX > 197 && mouseX < 248 && mouseY > 164 && mouseY < 176) {
-        word2 = "Strong";
+        word2 = "strong";
     }
-    if (screen === 3 && mouseX > 287 && mouseX < 332 && mouseY > 164 && mouseY < 176) {
-        word2 = "Fickle";
+    if (screen === 3 && mouseX > 287 && mouseX < 331 && mouseY > 164 && mouseY < 176) {
+        word2 = "brittle";
     }
     /*
     For Verbs ending in -ing (word3)
     */
     if (screen === 3 && mouseX > 17 && mouseX < 82 && mouseY > 244 && mouseY < 256) {
-        word3 = "Running";
+        word3 = "running";
     }
     if (screen === 3 && mouseX > 108 && mouseX < 158 && mouseY > 244 && mouseY < 256) {
-        word3 = "Falling";
+        word3 = "falling";
     }
-    if (screen === 3 && mouseX > 197 && mouseX < 270 && mouseY > 244 && mouseY < 256) {
-        word3 = "Wrecking";
+    if (screen === 3 && mouseX > 196 && mouseX < 265 && mouseY > 244 && mouseY < 256) {
+        word3 = "crawling";
     }
-    if (screen === 3 && mouseX > 287 && mouseX < 340 && mouseY > 244 && mouseY < 256) {
-        word3 = "Calling";
+    if (screen === 3 && mouseX > 287 && mouseX < 339 && mouseY > 244 && mouseY < 256) {
+        word3 = "sliding";
     }
     /*
     For Verbs (word4)
     */
-    if (screen === 3 && mouseX > 17 && mouseX < 61 && mouseY > 319 && mouseY < 332) {
-        word4 = "Sleep";
+    if (screen === 3 && mouseX > 17 && mouseX < 62 && mouseY > 319 && mouseY < 332) {
+        word4 = "rhino";
     }
-    if (screen === 3 && mouseX > 107 && mouseX < 154 && mouseY > 319 && mouseY < 332) {
-        word4 = "Swing";
+    if (screen === 3 && mouseX > 107 && mouseX < 139 && mouseY > 319 && mouseY < 332) {
+        word4 = "lion";
     }
-    if (screen === 3 && mouseX > 197 && mouseX < 241 && mouseY > 319 && mouseY < 332) {
-        word4 = "Crawl";
+    if (screen === 3 && mouseX > 197 && mouseX < 236 && mouseY > 319 && mouseY < 332) {
+        word4 = "deer";
     }
-    if (screen === 3 && mouseX > 287 && mouseX < 325 && mouseY > 319 && mouseY < 332) {
-        word4 = "Sling";
+    if (screen === 3 && mouseX > 287 && mouseX < 337 && mouseY > 319 && mouseY < 332) {
+        word4 = "snake";
     }
     if (word1 === undefined) {} //if no value is in word1, nothing will happen
     else {
@@ -245,10 +325,23 @@ mouseClicked = function() {
     fill(21, 35, 161);
     text("You chose: " + word4 + "!", 120,364);
     }
+    if (word1 !== undefined && word2 !== undefined && word3 !== undefined && word4 !== undefined) { //checks to see if all words have been selected (not undefined), then it will run the command
+    finalScreen();
+    
+    /*
+    resets the words to undefined, essentially restarting the program
+    */
+    word1 = undefined;
+    word2 = undefined;
+    word3 = undefined;
+    word4 = undefined;
+    }
+    
+    /*
+    Code to return to home screen after paragraph has been outputted
+    */
+    
+    if (screen === 4 && mouseX > 300 && mouseX < 395 && mouseY > 367 && mouseY < 390) {
+    splashScreen();
+    }
 };
-/*
-draw = function() {
-    println(mouseX + ", " + mouseY);
-};
-*/
-
