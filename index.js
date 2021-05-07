@@ -23,6 +23,9 @@ text("Madlibs!",54,107);
     fill(0, 64, 255);
     textSize(29);
     text("Instructions", 124, 287);
+    textSize(12);
+    text("By Amir Sammoura and Cade Curran",97,389);
+    drawBitmoji(321,323,64);
 };
 var instructionsScreen = function() { //Instructions screen of the game
     screen = 2;
