@@ -1,5 +1,49 @@
 var screen = 0;
 
+var drawBitmojiHead = function(x,y,bitmojiHead) {
+noStroke();
+fill(255, 224, 189); //
+ellipse(x,y,bitmojiHead/151*100,bitmojiHead/150*96); //
+fill(255, 255, 255); //
+arc(x-(bitmojiHead/150*39),y+(bitmojiHead/150*35),28*bitmojiHead/150,55*bitmojiHead/150,0,361); //
+arc(x+(bitmojiHead/150*42),y+43*bitmojiHead/150,22*bitmojiHead/150,55*bitmojiHead/150,0,361);//
+fill(90, 56, 37);//
+quad(x-56*bitmojiHead/150,y-14*bitmojiHead/150,x-35*bitmojiHead/150,y-40*bitmojiHead/150,x+1*bitmojiHead/1500,y-55*bitmojiHead/150,x-38*bitmojiHead/150,y-6*bitmojiHead/150);//
+quad(x+49*bitmojiHead/150,y-1*bitmojiHead/150,x+39*bitmojiHead/150,y-32*bitmojiHead/150,x+15*bitmojiHead/150,y-52*bitmojiHead/150,x+35*bitmojiHead/150,y-5*bitmojiHead/150); //
+ellipse(x,y-42*bitmojiHead/150,71*bitmojiHead/150,31*bitmojiHead/150);//
+fill(65, 99, 34);//
+ellipse(x-12*bitmojiHead/150,y,6*bitmojiHead/150,4*bitmojiHead/150);//
+ellipse(x+15*bitmojiHead/150,y,6*bitmojiHead/150,4*bitmojiHead/150);//
+
+stroke(5, 5, 5);//
+fill(255, 224, 189);//
+bezier(x,y, x+21*bitmojiHead/150, y+22*bitmojiHead/150, x-8*bitmojiHead/150, y+20*bitmojiHead/150, x-4*bitmojiHead/150, y+15*bitmojiHead/150);//
+
+fill(255, 255, 255);//
+arc(x+-2*bitmojiHead/150, y+28*bitmojiHead/150, 29*bitmojiHead/150 , 1*bitmojiHead/1500, 1, 183);//
+
+fill(0, 0, 0);//
+rect(x-56*bitmojiHead/157, y-60*bitmojiHead/150, 102*bitmojiHead/150, 8*bitmojiHead/150, 68*bitmojiHead/150);//
+rect(x-33*bitmojiHead/149, y-109*bitmojiHead/150, 61*bitmojiHead/150, 51*bitmojiHead/150);//
+
+line(x-18*bitmojiHead/150, y+27*bitmojiHead/150, x+19*bitmojiHead/150, y+27*bitmojiHead/150);//
+};
+
+var drawBitmojiBody = function (bodyX, bodyY, bodyH) {
+    noStroke();
+    fill(0, 153, 255);
+quad(bodyX-81*bodyH/150,bodyY+100*bodyH/150,bodyX+7*bodyH/150,bodyY+79*bodyH/150,bodyX+4*bodyH/150,bodyY+50*bodyH/150,bodyX-77*bodyH/150,bodyY+36*bodyH/150);
+quad(bodyX+95*bodyH/150,bodyY+74*bodyH/150,bodyX-12*bodyH/150,bodyY+81*bodyH/150,bodyX-1*bodyH/150,bodyY+49*bodyH/150,bodyX+70*bodyH/150,bodyY+31*bodyH/150);
+fill(250, 250, 250);
+textSize(29*bodyH/150);
+text("CC", bodyX-23*bodyH/150, bodyY+54*bodyH/150, 55*bodyH/150, 96*bodyH/150);
+};
+
+var drawBitmoji = function(bitmojiX, bitmojiY,bitmojiH) {
+    drawBitmojiHead(bitmojiX,bitmojiY,bitmojiH);
+    drawBitmojiBody(bitmojiX,bitmojiY,bitmojiH);
+};
+
 var splashScreen = function() { //Starting screen of the game
 screen = 1;
 background(94, 141, 191);
